@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dpcsywq6wrhu5"]
+
+[ext_resource type="Script" uid="uid://conaghu248wom" path="res://Jurassify2/home.gd" id="1_hsyhs"]
+[ext_resource type="Texture2D" uid="uid://c7p6i2mxy61ej" path="res://Jurassify2/searchIcon.svg" id="2_2w01q"]
+[ext_resource type="Script" uid="uid://buk2w65ivsb7c" path="res://Jurassify2/search_button.gd" id="3_lpk85"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3n44d"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3i0vd"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3n44d"]
+diffuse_texture = ExtResource("2_2w01q")
+
+[sub_resource type="Gradient" id="Gradient_jmugw"]
+colors = PackedColorArray(0, 0, 0, 0, 0.9957554, 0.9894056, 0.99087626, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3i0vd"]
+gradient = SubResource("Gradient_jmugw")
+width = 128
+fill_from = Vector2(1, 0.5)
+fill_to = Vector2(0, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4nn0m"]
+
+[node name="Control" type="Control" unique_id=1242500538]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hsyhs")
+
+[node name="Background" type="Panel" parent="." unique_id=1571745215]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3n44d")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1530455833]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1943119589]
+layout_mode = 2
+
+[node name="Control" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1942980880]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Control" unique_id=640318306]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.4745098, 0.7764706, 1)
+theme_override_font_sizes/font_size = 64
+text = "Recently Played"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/Control" unique_id=963190925]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3i0vd")
+
+[node name="SearchButton" type="TextureButton" parent="MarginContainer/VBoxContainer/Control" unique_id=770921986]
+modulate = Color(1, 0.4745098, 0.7764706, 1)
+texture_filter = 2
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = SubResource("CanvasTexture_3n44d")
+stretch_mode = 0
+script = ExtResource("3_lpk85")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=899542118]
+layout_mode = 2
+theme_override_icons/scroll_hint_horizontal = SubResource("GradientTexture2D_3i0vd")
+follow_focus = true
+draw_focus_border = true
+vertical_scroll_mode = 0
+scroll_horizontal_by_default = true
+scroll_hint_mode = 1
+tile_scroll_hint = true
+
+[node name="BigSongCardContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" unique_id=2137264310]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=280896460]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4nn0m")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Control/SearchButton" to="MarginContainer/VBoxContainer/Control/SearchButton" method="_on_pressed"]

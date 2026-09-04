@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://d2p1rdot2rukb"]
+
+[ext_resource type="Script" uid="uid://ct3yfk1cmlolq" path="res://Jurassify2/big_song_card.gd" id="1_8jacx"]
+[ext_resource type="Texture2D" uid="uid://vgmgvudanuex" path="res://Jurassify2/Logo/jurassify_logo_foreground.png" id="1_g8fve"]
+
+[sub_resource type="Gradient" id="Gradient_g8fve"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.99659866, 1)
+colors = PackedColorArray(0.0632672, 3.524675e-05, 0.103266515, 0.57254905, 0.24563032, 0.00045380078, 0.37435442, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wvbph"]
+gradient = SubResource("Gradient_g8fve")
+use_hdr = true
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f4bht"]
+texture = SubResource("GradientTexture2D_wvbph")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0sty"]
+texture = ExtResource("1_g8fve")
+
+[node name="BigSongCard" type="Control" unique_id=1768898623]
+custom_minimum_size = Vector2(355, 450)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 250.0
+offset_bottom = 300.0
+mouse_filter = 1
+script = ExtResource("1_8jacx")
+
+[node name="Panel" type="Panel" parent="." unique_id=1225609697]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_f4bht")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1184386504]
+layout_mode = 1
+offset_right = 350.0
+offset_bottom = 415.0
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=780527102]
+layout_mode = 2
+
+[node name="SongArt" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=1151082395]
+custom_minimum_size = Vector2(350, 350)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_r0sty")
+
+[node name="SongTitle" type="Label" parent="." unique_id=1079735636]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 360.0
+offset_right = 360.0
+offset_bottom = 405.0
+theme_override_colors/font_color = Color(1, 0.47058824, 0.76862746, 1)
+theme_override_font_sizes/font_size = 32
+text = "Title"
+
+[node name="ArtistName" type="Label" parent="." unique_id=1546112553]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 400.0
+offset_right = 360.0
+offset_bottom = 434.0
+theme_override_colors/font_color = Color(0.7168001, 0.38400003, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+text = "Artist"

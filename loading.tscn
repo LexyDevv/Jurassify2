@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://75clw8u6as3b"]
+
+[ext_resource type="Script" uid="uid://gbx442ffpqp5" path="res://Jurassify2/RotateLogo.gd" id="1_pg7vo"]
+[ext_resource type="Texture2D" uid="uid://d1db6flmh7prk" path="res://Jurassify2/Logo/jurassify_logo_foreground_small.png" id="2_1l04a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3i0vd"]
+texture = ExtResource("2_1l04a")
+
+[node name="Loading" type="Panel" unique_id=695284359]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pg7vo")
+
+[node name="Logo" type="Panel" parent="." unique_id=254177187]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 50)
+theme_override_styles/panel = SubResource("StyleBoxTexture_3i0vd")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

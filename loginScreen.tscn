@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://dn0ahhcp2onu6"]
+
+[ext_resource type="Script" uid="uid://bddfu3kirn86" path="res://Jurassify2/credentialsAutoFill.gd" id="1_4fknf"]
+[ext_resource type="Texture2D" uid="uid://vgmgvudanuex" path="res://Jurassify2/Logo/jurassify_logo_foreground.png" id="1_i3o2x"]
+[ext_resource type="Theme" uid="uid://c4s84401njiqb" path="res://Jurassify2/purpleTheme.tres" id="1_pyi4g"]
+[ext_resource type="Script" uid="uid://dgot1yav37rom" path="res://Jurassify2/connect_to_server_button.gd" id="3_01m31"]
+[ext_resource type="Script" uid="uid://dfiv5vkbp5l65" path="res://Jurassify2/TextEdit.gd" id="3_o0yi8"]
+
+[sub_resource type="Gradient" id="Gradient_pyi4g"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.1, 0.9, 1)
+colors = PackedColorArray(0.35013333, 0.128, 0.4, 1, 0.06231056, 0.022779167, 0.07118493, 1, 0, 0, 0, 1, 0.3457333, 0.103999995, 0.4, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nng11"]
+gradient = SubResource("Gradient_pyi4g")
+width = 18
+height = 32
+use_hdr = true
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4nn0m"]
+texture = SubResource("GradientTexture2D_nng11")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3i0vd"]
+texture = ExtResource("1_i3o2x")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyi4g"]
+bg_color = Color(0.2604, 0.08399999, 0.3, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3o2x"]
+bg_color = Color(0.2604, 0.08399999, 0.3, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[node name="Control" type="Control" unique_id=470091083]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4fknf")
+
+[node name="Background" type="Panel" parent="." unique_id=1632187232]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4nn0m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2050285065]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -242.5
+offset_right = 125.0
+offset_bottom = 242.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="Panel2" type="Panel" parent="VBoxContainer" unique_id=912226284]
+custom_minimum_size = Vector2(700, 700)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3i0vd")
+
+[node name="ServerURL" type="LineEdit" parent="VBoxContainer" unique_id=1222600951]
+z_index = 1
+custom_minimum_size = Vector2(700, 80)
+layout_mode = 2
+theme = ExtResource("1_pyi4g")
+theme_override_font_sizes/font_size = 40
+placeholder_text = "http://example.com"
+script = ExtResource("3_o0yi8")
+
+[node name="Panel" type="Panel" parent="VBoxContainer/ServerURL" unique_id=445014894]
+z_index = -1
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 0
+offset_left = 8.0
+offset_top = -59.5
+offset_right = 108.0
+offset_bottom = 0.5
+theme_override_styles/panel = SubResource("StyleBoxFlat_pyi4g")
+
+[node name="Label" type="Label" parent="VBoxContainer/ServerURL/Panel" unique_id=343413224]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "URL"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="username" type="LineEdit" parent="VBoxContainer" unique_id=1520040701]
+z_index = 1
+custom_minimum_size = Vector2(700, 80)
+layout_mode = 2
+theme = ExtResource("1_pyi4g")
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Username"
+script = ExtResource("3_o0yi8")
+
+[node name="Panel" type="Panel" parent="VBoxContainer/username" unique_id=164934529]
+z_index = -1
+custom_minimum_size = Vector2(230, 60)
+layout_mode = 0
+offset_left = 8.0
+offset_top = -55.5
+offset_right = 208.0
+offset_bottom = 4.5
+theme = ExtResource("1_pyi4g")
+theme_override_styles/panel = SubResource("StyleBoxFlat_i3o2x")
+
+[node name="Label" type="Label" parent="VBoxContainer/username/Panel" unique_id=781717343]
+layout_mode = 1
+offset_left = 16.0
+offset_top = -3.0
+offset_right = 215.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 40
+text = "Username"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="password" type="LineEdit" parent="VBoxContainer" unique_id=1275034126]
+z_index = 1
+custom_minimum_size = Vector2(700, 80)
+layout_mode = 2
+theme = ExtResource("1_pyi4g")
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Password"
+script = ExtResource("3_o0yi8")
+
+[node name="Panel" type="Panel" parent="VBoxContainer/password" unique_id=1852031179]
+z_index = -1
+custom_minimum_size = Vector2(230, 50)
+layout_mode = 0
+offset_left = 8.0
+offset_top = -45.5
+offset_right = 208.0
+offset_bottom = 4.5
+theme = ExtResource("1_pyi4g")
+theme_override_styles/panel = SubResource("StyleBoxFlat_i3o2x")
+
+[node name="Label" type="Label" parent="VBoxContainer/password/Panel" unique_id=1518939194]
+layout_mode = 1
+offset_left = 24.0
+offset_top = -5.0
+offset_right = 210.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 40
+text = "Password"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConnectToServerButton" type="Button" parent="VBoxContainer" unique_id=1118687581]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+theme = ExtResource("1_pyi4g")
+theme_override_font_sizes/font_size = 40
+text = "Connect To Server"
+script = ExtResource("3_01m31")
+
+[connection signal="button_up" from="VBoxContainer/ConnectToServerButton" to="VBoxContainer/ConnectToServerButton" method="_on_button_up"]
