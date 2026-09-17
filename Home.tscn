@@ -4,8 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://c7p6i2mxy61ej" path="res://Jurassify2/searchIcon.svg" id="2_2w01q"]
 [ext_resource type="Script" uid="uid://buk2w65ivsb7c" path="res://Jurassify2/search_button.gd" id="3_lpk85"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3n44d"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_hsyhs"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.1, 0.9, 1)
+colors = PackedColorArray(0.35013333, 0.128, 0.4, 1, 0.06231056, 0.022779167, 0.07118493, 1, 0, 0, 0, 1, 0.3457333, 0.103999995, 0.4, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nng11"]
+gradient = SubResource("Gradient_hsyhs")
+width = 18
+height = 32
+use_hdr = true
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2w01q"]
+texture = SubResource("GradientTexture2D_nng11")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3i0vd"]
 
@@ -33,14 +47,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hsyhs")
 
-[node name="Background" type="Panel" parent="." unique_id=1571745215]
+[node name="Background" type="Panel" parent="." unique_id=1104421568]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3n44d")
+theme_override_styles/panel = SubResource("StyleBoxTexture_2w01q")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1530455833]
 layout_mode = 0

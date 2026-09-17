@@ -2,7 +2,7 @@ extends Control # Or whatever your container type is
 
 @export var number_of_cards: int = 15 # Change this in the Godot Inspector
 
-var song_card_scene = preload("res://BigSongCard.tscn")
+var song_card_scene = preload("res://Jurassify2/BigSongCard.tscn")
 var http_request: HTTPRequest
 
 func _ready():

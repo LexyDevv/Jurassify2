@@ -5,6 +5,8 @@ var password
 var http_request: HTTPRequest
 var active_loading_screen: Node = null
 var validCredentials = false
+signal random_songs_received(songs_array: Array)
+
 
 func _ready():
 	http_request = HTTPRequest.new()
@@ -39,7 +41,7 @@ func connectToServer():
 	stopLoading()
 	if validCredentials==true:
 		saveCredentials(ServerUrl,username,token,salt)
-		get_tree().change_scene_to_file("res://Home.tscn")
+		get_tree().change_scene_to_file("res://Jurassify2/Home.tscn")
 	
 
 func _on_request_completed(result, response_code, headers, body):
@@ -57,7 +59,7 @@ func _on_request_completed(result, response_code, headers, body):
 
 func loading():
 	if active_loading_screen == null:
-		active_loading_screen = preload("res://loading.tscn").instantiate()
+		active_loading_screen = preload("res://Jurassify2/loading.tscn").instantiate()
 		active_loading_screen.z_index = 1
 		get_tree().current_scene.add_child(active_loading_screen)
 

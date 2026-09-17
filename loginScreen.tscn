@@ -145,6 +145,7 @@ layout_mode = 2
 theme = ExtResource("1_pyi4g")
 theme_override_font_sizes/font_size = 40
 placeholder_text = "Password"
+secret = true
 script = ExtResource("3_o0yi8")
 
 [node name="Panel" type="Panel" parent="VBoxContainer/password" unique_id=1852031179]

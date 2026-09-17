@@ -10,3 +10,10 @@ func _ready() -> void:
 	urlLineEdit.text = cred.get("serverUrl","")
 	usernameLineEdit.text = cred.get("username","")
 	passwordLineEdit.text = cred.get("password","")
+	
+	#if all the credentials are already there
+	#login automatically
+	NavidromeInterface.setServerUrl(urlLineEdit.text)
+	NavidromeInterface.setUsername(usernameLineEdit.text)
+	NavidromeInterface.setPassword(passwordLineEdit.text)
+	NavidromeInterface.connectToServer()

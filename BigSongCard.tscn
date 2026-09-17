@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ct3yfk1cmlolq" path="res://Jurassify2/big_song_card.gd" id="1_8jacx"]
 [ext_resource type="Texture2D" uid="uid://vgmgvudanuex" path="res://Jurassify2/Logo/jurassify_logo_foreground.png" id="1_g8fve"]
+[ext_resource type="Script" uid="uid://n4p5pdrxjsbk" path="res://Jurassify2/playSelectedSong.gd" id="3_rs13s"]
 
 [sub_resource type="Gradient" id="Gradient_g8fve"]
 interpolation_mode = 1
@@ -78,3 +79,15 @@ offset_bottom = 434.0
 theme_override_colors/font_color = Color(0.7168001, 0.38400003, 0.8, 1)
 theme_override_font_sizes/font_size = 24
 text = "Artist"
+
+[node name="PlayButton" type="Button" parent="." unique_id=1394403983]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_rs13s")
+
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
