@@ -3,8 +3,13 @@ var ServerUrl
 var username
 var password
 var http_request: HTTPRequest
+var audio_player: AudioStreamPlayer
+var audio_http: HTTPRequest
 var active_loading_screen: Node = null
 var validCredentials = false
+var selectedSong: Dictionary
+var token
+var salt
 signal random_songs_received(songs_array: Array)
 
 
@@ -13,6 +18,14 @@ func _ready():
 	add_child(http_request)
 	http_request.request_completed.connect(_on_request_completed)
 	http_request.timeout = 10.0
+	# Setup global audio player
+	audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
+	
+	# Setup dedicated HTTP request for audio
+	audio_http = HTTPRequest.new()
+	add_child(audio_http)
+	audio_http.request_completed.connect(_on_audio_downloaded)
 
 func setServerUrl(URL:String):
 	ServerUrl=URL
@@ -30,8 +43,8 @@ func setPassword(pwd:String):
 	validCredentials=false
 
 func connectToServer():
-	var salt = str(randi()) # Simple random salt
-	var token = (password + salt).md5_text()
+	salt = str(randi()) # Simple random salt
+	token = (password + salt).md5_text()
 	
 	var request_url = ServerUrl + "/rest/ping.view?u=" + username + "&t=" + token + "&s="+ salt + "&v=1.16.1&c=Jurassify&f=json"
 	http_request.request(request_url)
@@ -78,7 +91,7 @@ func saveCredentials(url: String, user: String, token: String, salt: String) -> 
 	file.store_string(JSON.stringify(data))
 
 func readCredentialsEncrypted() -> Dictionary:
-	if not FileAccess.file_exists("user://auth.dat"):
+	if not FileAccess.file_exists("user://F.dat"):
 		return {}
 		
 	var file = FileAccess.open_encrypted_with_pass("user://auth.dat", FileAccess.READ, "8d16KiNd")
@@ -88,3 +101,27 @@ func readCredentialsEncrypted() -> Dictionary:
 	
 	var parsed = JSON.parse_string(file.get_as_text())
 	return parsed if parsed is Dictionary else {}
+
+func setSelectedSong(song: Dictionary):
+	selectedSong=song
+	
+func getSelectedSong() -> Dictionary:
+	return selectedSong
+
+
+func playSongAudio(song: Dictionary) -> void:
+	# Use the modular auth string you built earlier
+	var request_url = ServerUrl + "/rest/download?id=" + song.get("id", "") + "&u=" + username + "&t=" + token + "&s="+ salt + "&v=1.16.1&c=Jurassify&f=json"
+	print("Downloading audio for: ", song.get("title", "Unknown"))
+	loading()
+	audio_http.request(request_url)
+
+func _on_audio_downloaded(result, response_code, headers, body):
+	stopLoading()
+	if response_code == 200:
+		var stream = AudioStreamMP3.new()
+		stream.data = body
+		audio_player.stream = stream
+		audio_player.play()
+	else:
+		print("Failed to download audio. Code: ", response_code)

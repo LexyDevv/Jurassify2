@@ -3,7 +3,6 @@ extends Control
 var song_data: Dictionary
 var song_http: HTTPRequest
 var image_http: HTTPRequest
-
 @onready var songTitleText = $SongTitle
 @onready var songArtistText = $ArtistName
 @onready var songArt = $MarginContainer/VBoxContainer/SongArt 
@@ -55,3 +54,8 @@ func _on_cover_request_completed(result, response_code, headers, body):
 			var stylebox = StyleBoxTexture.new()
 			stylebox.texture = texture
 			songArt.add_theme_stylebox_override("panel", stylebox)
+
+
+func _on_play_button_pressed() -> void:
+	NavidromeInterface.setSelectedSong(song_data)
+	get_tree().change_scene_to_file("res://fullscreen_player.tscn")

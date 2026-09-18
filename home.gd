@@ -22,3 +22,5 @@ func _on_random_songs_received(result, response_code, headers, body):
 				var card = song_card_scene.instantiate()
 				$MarginContainer/VBoxContainer/ScrollContainer/BigSongCardContainer.add_child(card)
 				card.setup_by_dict(song_data)
+				print(song_data)
+				print(song_data.id)

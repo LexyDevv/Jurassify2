@@ -60,8 +60,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2w01q")
 layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 1920.0
-theme_override_constants/margin_left = 0
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1943119589]
@@ -74,7 +75,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.4745098, 0.7764706, 1)
 theme_override_font_sizes/font_size = 64
-text = "Recently Played"
+text = "Random Songs"
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/Control" unique_id=963190925]
 layout_mode = 2

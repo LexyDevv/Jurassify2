@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ct3yfk1cmlolq" path="res://Jurassify2/big_song_card.gd" id="1_8jacx"]
 [ext_resource type="Texture2D" uid="uid://vgmgvudanuex" path="res://Jurassify2/Logo/jurassify_logo_foreground.png" id="1_g8fve"]
-[ext_resource type="Script" uid="uid://n4p5pdrxjsbk" path="res://Jurassify2/playSelectedSong.gd" id="3_rs13s"]
 
 [sub_resource type="Gradient" id="Gradient_g8fve"]
 interpolation_mode = 1
@@ -88,6 +87,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_rs13s")
 
-[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
