@@ -91,7 +91,7 @@ func saveCredentials(url: String, user: String, token: String, salt: String) -> 
 	file.store_string(JSON.stringify(data))
 
 func readCredentialsEncrypted() -> Dictionary:
-	if not FileAccess.file_exists("user://F.dat"):
+	if not FileAccess.file_exists("user://auth.dat"):
 		return {}
 		
 	var file = FileAccess.open_encrypted_with_pass("user://auth.dat", FileAccess.READ, "8d16KiNd")
@@ -111,7 +111,7 @@ func getSelectedSong() -> Dictionary:
 
 func playSongAudio(song: Dictionary) -> void:
 	# Use the modular auth string you built earlier
-	var request_url = ServerUrl + "/rest/download?id=" + song.get("id", "") + "&u=" + username + "&t=" + token + "&s="+ salt + "&v=1.16.1&c=Jurassify&f=json"
+	var request_url = ServerUrl + "/rest/stream?id=" + song.get("id", "") + "&format=mp3&u=" + username + "&t=" + token + "&s="+ salt + "&v=1.16.1&c=Jurassify"
 	print("Downloading audio for: ", song.get("title", "Unknown"))
 	loading()
 	audio_http.request(request_url)
@@ -119,9 +119,21 @@ func playSongAudio(song: Dictionary) -> void:
 func _on_audio_downloaded(result, response_code, headers, body):
 	stopLoading()
 	if response_code == 200:
+		if body.size() < 1000:
+			print("Server returned an error instead of audio: ", body.get_string_from_utf8())
+			return
 		var stream = AudioStreamMP3.new()
 		stream.data = body
 		audio_player.stream = stream
 		audio_player.play()
+		
 	else:
 		print("Failed to download audio. Code: ", response_code)
+
+func play_pauseStream():
+	if audio_player.stream_paused==true:
+		audio_player.stream_paused=false
+	else:
+		audio_player.stream_paused=true
+func isStreamPaused():
+	return audio_player.stream_paused
