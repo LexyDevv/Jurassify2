@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://db8whv76b16u5"]
+
+[ext_resource type="Texture2D" uid="uid://vgmgvudanuex" path="res://Jurassify2/Logo/jurassify_logo_foreground.png" id="1_r2gdh"]
+
+[sub_resource type="Gradient" id="Gradient_pov1f"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.99659866, 1)
+colors = PackedColorArray(0.0632672, 3.524675e-05, 0.103266515, 0.57254905, 0.24563032, 0.00045380078, 0.37435442, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_elxek"]
+gradient = SubResource("Gradient_pov1f")
+width = 200
+use_hdr = true
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pnv8k"]
+texture = SubResource("GradientTexture2D_elxek")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l184l"]
+texture = ExtResource("1_r2gdh")
+
+[node name="SmallSongCard" type="Control" unique_id=475129785]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 117.0
+
+[node name="Panel" type="Panel" parent="." unique_id=1821474546]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_pnv8k")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=548980118]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 117.0
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=877657504]
+layout_mode = 2
+
+[node name="SongArt" type="Panel" parent="MarginContainer/HBoxContainer" unique_id=2038629145]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_l184l")
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=1091143307]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1162202207]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SongTitle" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=2070371477]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.47058824, 0.76862746, 1)
+theme_override_font_sizes/font_size = 32
+text = "Title"
+
+[node name="ArtistName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1505317789]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7168001, 0.38400003, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+text = "Artist"
+
+[node name="SongDuration" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=324604372]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.42525852, 0.00020965755, 0.4566602, 1)
+text = "0:00"
+
+[node name="PlayButton" type="Button" parent="." unique_id=826500477]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
