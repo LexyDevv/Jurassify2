@@ -12,9 +12,10 @@ offset_bottom = 125.0
 script = ExtResource("1_r3412")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=541629434]
+position = Vector2(60, 61)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_js1oa")
-offset = Vector2(24, 24)
+offset = Vector2(0, -0.39999962)
 
 [node name="Button" type="Button" parent="." unique_id=2030300261]
 layout_mode = 1

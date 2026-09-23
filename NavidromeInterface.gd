@@ -143,3 +143,5 @@ func isStreamPaused():
 	
 func getNowPlaying():
 	return nowPlaying
+func getNowPlayingID():
+	nowPlaying.get("id","")
