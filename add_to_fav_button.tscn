@@ -12,12 +12,14 @@ offset_bottom = 125.0
 script = ExtResource("1_r3412")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=541629434]
+self_modulate = Color(0.841794, 0.0013684535, 0.9468047, 1)
 position = Vector2(60, 61)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_js1oa")
 offset = Vector2(0, -0.39999962)
 
 [node name="Button" type="Button" parent="." unique_id=2030300261]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
