@@ -4,9 +4,9 @@ var song_data: Dictionary
 var song_http: HTTPRequest
 var image_http: HTTPRequest
 @onready var songTitleText = $MarginContainer/HBoxContainer/VBoxContainer/SongTitle
-@onready var songArtistText = $MarginContainer/HBoxContainer/VBoxContainer/ArtistName
+@onready var songArtistText = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ArtistName
 @onready var songArt = $MarginContainer/HBoxContainer/SongArt
-@onready var songDurationText = $MarginContainer/HBoxContainer/VBoxContainer/SongDuration
+@onready var songDurationText = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/SongDuration
 
 func _ready() -> void:
 	# Initialize network nodes and attach them to the tree

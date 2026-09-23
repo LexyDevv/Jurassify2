@@ -10,7 +10,9 @@ var validCredentials = false
 var selectedSong: Dictionary
 var token
 var salt
+var nowPlaying
 signal random_songs_received(songs_array: Array)
+
 
 
 func _ready():
@@ -115,6 +117,7 @@ func playSongAudio(song: Dictionary) -> void:
 	print("Downloading audio for: ", song.get("title", "Unknown"))
 	loading()
 	audio_http.request(request_url)
+	nowPlaying = song
 
 func _on_audio_downloaded(result, response_code, headers, body):
 	stopLoading()
@@ -137,3 +140,6 @@ func play_pauseStream():
 		audio_player.stream_paused=true
 func isStreamPaused():
 	return audio_player.stream_paused
+	
+func getNowPlaying():
+	return nowPlaying

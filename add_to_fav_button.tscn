@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://j3lsas710e0h"]
+
+[ext_resource type="Script" uid="uid://dmkwxtby6yf5o" path="res://add_to_fav_button.gd" id="1_r3412"]
+[ext_resource type="Texture2D" uid="uid://x12amtux5kjb" path="res://Jurassify2/addToFav.svg" id="2_js1oa"]
+
+[node name="AddToFavButton" type="Control" unique_id=1716548324]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 125.0
+offset_bottom = 125.0
+script = ExtResource("1_r3412")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=541629434]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_js1oa")
+offset = Vector2(24, 24)
+
+[node name="Button" type="Button" parent="." unique_id=2030300261]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

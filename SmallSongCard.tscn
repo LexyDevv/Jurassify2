@@ -73,15 +73,20 @@ theme_override_colors/font_color = Color(1, 0.47058824, 0.76862746, 1)
 theme_override_font_sizes/font_size = 32
 text = "Title"
 
-[node name="ArtistName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1505317789]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1115946309]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ArtistName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1505317789]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7168001, 0.38400003, 0.8, 1)
 theme_override_font_sizes/font_size = 24
 text = "Artist"
 
-[node name="SongDuration" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=324604372]
+[node name="SongDuration" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=324604372]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.42525852, 0.00020965755, 0.4566602, 1)
+theme_override_colors/font_color = Color(0.50931007, 0.00030981764, 0.546295, 1)
 text = "0:00"
 
 [node name="PlayButton" type="Button" parent="." unique_id=826500477]

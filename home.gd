@@ -5,19 +5,19 @@ extends Control # Or whatever your container type is
 var big_song_card_scene = preload("res://Jurassify2/BigSongCard.tscn")
 var small_song_card_scene = preload("res://Jurassify2/SmallSongCard.tscn")
 var http_request_random_songs: HTTPRequest
-var http_request_recent_songs: HTTPRequest
+var http_request_starred_songs: HTTPRequest
 
 func _ready():
 	http_request_random_songs = HTTPRequest.new()
-	http_request_recent_songs = HTTPRequest.new()
+	http_request_starred_songs = HTTPRequest.new()
 	add_child(http_request_random_songs)
-	add_child(http_request_recent_songs)
+	add_child(http_request_starred_songs)
 	http_request_random_songs.request_completed.connect(_on_random_songs_received)
-	http_request_recent_songs.request_completed.connect(_on_recent_songs_received)
+	http_request_starred_songs.request_completed.connect(_on_starred_songs_received)
 	var url = NavidromeInterface.ServerUrl + "/rest/getRandomSongs.view?size=" + str(number_of_cards) + "&u=" + NavidromeInterface.username + "&p=" + NavidromeInterface.password + "&v=1.16.1&c=Jurassify&f=json"
-	var urlStarred = NavidromeInterface.ServerUrl + "/rest/getStarred.view?size=" + str(number_of_cards) + "&u=" + NavidromeInterface.username + "&p=" + NavidromeInterface.password + "&v=1.16.1&c=Jurassify&f=json"
+	var urlStarred = NavidromeInterface.ServerUrl + "/rest/getStarred.view?" + "&u=" + NavidromeInterface.username + "&p=" + NavidromeInterface.password + "&v=1.16.1&c=Jurassify&f=json"
 	http_request_random_songs.request(url)
-	http_request_recent_songs.request(urlStarred)
+	http_request_starred_songs.request(urlStarred)
 
 func _on_random_songs_received(result, response_code, headers, body):
 	if response_code == 200:
@@ -32,7 +32,7 @@ func _on_random_songs_received(result, response_code, headers, body):
 				print(song_data)
 				card.setup_by_dict(song_data)
 
-func _on_recent_songs_received(result,response_code, headers, body):
+func _on_starred_songs_received(result,response_code, headers, body):
 	if response_code == 200:
 		var json = JSON.parse_string(body.get_string_from_utf8())
 		var response = json.get("subsonic-response",{})
