@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://db8whv76b16u5"]
 
+[ext_resource type="Script" uid="uid://c67o0kovuhi0h" path="res://Jurassify2/small_song_card.gd" id="1_pov1f"]
 [ext_resource type="Texture2D" uid="uid://vgmgvudanuex" path="res://Jurassify2/Logo/jurassify_logo_foreground.png" id="1_r2gdh"]
 
 [sub_resource type="Gradient" id="Gradient_pov1f"]
@@ -27,6 +28,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 500.0
 offset_bottom = 117.0
+script = ExtResource("1_pov1f")
 
 [node name="Panel" type="Panel" parent="." unique_id=1821474546]
 texture_filter = 1

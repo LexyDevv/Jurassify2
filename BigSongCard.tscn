@@ -8,7 +8,7 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0.99659866, 1)
 colors = PackedColorArray(0.0632672, 3.524675e-05, 0.103266515, 0.57254905, 0.24563032, 0.00045380078, 0.37435442, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_wvbph"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ojkpa"]
 gradient = SubResource("Gradient_g8fve")
 use_hdr = true
 fill = 2
@@ -16,7 +16,7 @@ fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f4bht"]
-texture = SubResource("GradientTexture2D_wvbph")
+texture = SubResource("GradientTexture2D_ojkpa")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0sty"]
 texture = ExtResource("1_g8fve")
@@ -79,6 +79,21 @@ theme_override_colors/font_color = Color(0.7168001, 0.38400003, 0.8, 1)
 theme_override_font_sizes/font_size = 24
 text = "Artist"
 
+[node name="SongDuration" type="Label" parent="." unique_id=1103831200]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -42.0
+offset_right = -15.0
+offset_bottom = -19.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "0:00"
+
 [node name="PlayButton" type="Button" parent="." unique_id=1394403983]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -87,5 +102,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1904715536]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=128694314]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

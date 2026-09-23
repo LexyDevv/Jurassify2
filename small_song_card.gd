@@ -3,10 +3,10 @@ extends Control
 var song_data: Dictionary
 var song_http: HTTPRequest
 var image_http: HTTPRequest
-@onready var songTitleText = $SongTitle
-@onready var songArtistText = $ArtistName
-@onready var songDurationText = $SongDuration
-@onready var songArt = $MarginContainer/VBoxContainer/SongArt 
+@onready var songTitleText = $MarginContainer/HBoxContainer/VBoxContainer/SongTitle
+@onready var songArtistText = $MarginContainer/HBoxContainer/VBoxContainer/ArtistName
+@onready var songArt = $MarginContainer/HBoxContainer/SongArt
+@onready var songDurationText = $MarginContainer/HBoxContainer/VBoxContainer/SongDuration
 
 func _ready() -> void:
 	# Initialize network nodes and attach them to the tree
@@ -26,17 +26,10 @@ func setup_by_dict(song: Dictionary) -> void:
 	var duration = song.get("duration","00:00")
 	var durationText = str(int(duration)/60)+":"+str(int(duration)%60)
 	songDurationText.text = str(durationText)
-	
 	var cover_art_id = song.get("coverArt", "")
 	if cover_art_id != "":
 		var cover_url = NavidromeInterface.ServerUrl + "/rest/getCoverArt.view?id=" + cover_art_id + "&u=" + NavidromeInterface.username + "&p=" + NavidromeInterface.password + "&v=1.16.1&c=Jurassify"
 		image_http.request(cover_url)
-
-# Method 2: Fetch data first if you only have a Song ID
-func setup_by_id(song_id: String) -> void:
-	# Uses the getSong.view endpoint
-	var url = NavidromeInterface.ServerUrl + "/rest/getSong.view?id=" + song_id + "&u=" + NavidromeInterface.username + "&p=" + NavidromeInterface.password + "&v=1.16.1&c=Jurassify&f=json"
-	song_http.request(url)
 
 func _on_song_request_completed(result, response_code, headers, body):
 	if response_code == 200:

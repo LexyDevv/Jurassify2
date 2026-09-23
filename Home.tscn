@@ -36,6 +36,15 @@ fill_from = Vector2(1, 0.5)
 fill_to = Vector2(0, 0.5)
 metadata/_snap_enabled = true
 
+[sub_resource type="Gradient" id="Gradient_2w01q"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hsyhs"]
+gradient = SubResource("Gradient_2w01q")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4nn0m"]
 
 [node name="Control" type="Control" unique_id=1242500538]
@@ -71,11 +80,11 @@ layout_mode = 2
 [node name="Control" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1942980880]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Control" unique_id=640318306]
+[node name="RecentSongs" type="Label" parent="MarginContainer/VBoxContainer/Control" unique_id=640318306]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.4745098, 0.7764706, 1)
 theme_override_font_sizes/font_size = 64
-text = "Random Songs"
+text = "Recent Songs"
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/Control" unique_id=963190925]
 layout_mode = 2
@@ -104,6 +113,22 @@ tile_scroll_hint = true
 [node name="BigSongCardContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" unique_id=2137264310]
 custom_minimum_size = Vector2(0, 350)
 layout_mode = 2
+
+[node name="RandomSongs" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1349858442]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.4745098, 0.7764706, 1)
+theme_override_font_sizes/font_size = 64
+text = "Random Songs"
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=371354359]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+theme_override_icons/scroll_hint_vertical = SubResource("GradientTexture2D_hsyhs")
+
+[node name="SmallSongCardContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer2" unique_id=325127488]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=280896460]
 layout_mode = 2
