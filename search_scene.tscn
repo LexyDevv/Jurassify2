@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://dhaevdqgymes6"]
+
+[ext_resource type="Script" uid="uid://48vubvbnxs74" path="res://Jurassify2/search_logic.gd" id="1_6j7jm"]
+[ext_resource type="Texture2D" uid="uid://c7p6i2mxy61ej" path="res://Jurassify2/searchIcon.svg" id="1_iwqgb"]
+
+[sub_resource type="Gradient" id="Gradient_xpg05"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.1, 0.9, 1)
+colors = PackedColorArray(0.35013333, 0.128, 0.4, 1, 0.06231056, 0.022779167, 0.07118493, 1, 0, 0, 0, 1, 0.3457333, 0.103999995, 0.4, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nng11"]
+gradient = SubResource("Gradient_xpg05")
+width = 18
+height = 32
+use_hdr = true
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nii3h"]
+texture = SubResource("GradientTexture2D_nng11")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3i0vd"]
+bg_color = Color(0.17283267, 0.17283267, 0.17283258, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.7268014, 0.00073928834, 0.7871069, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iwqgb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6j7jm"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xjsxs"]
+diffuse_texture = ExtResource("1_iwqgb")
+
+[sub_resource type="Gradient" id="Gradient_2w01q"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_37k4y"]
+gradient = SubResource("Gradient_2w01q")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0.1)
+metadata/_snap_enabled = true
+
+[node name="SearchScene" type="Control" unique_id=869912295]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6j7jm")
+
+[node name="Background" type="Panel" parent="." unique_id=305734897]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nii3h")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1680616204]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=636668114]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=1646434738]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3i0vd")
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Panel" unique_id=1106237244]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.096
+anchor_top = 0.2
+anchor_right = 0.96000004
+anchor_bottom = 0.83000004
+offset_left = -0.08000183
+offset_right = 0.19995117
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_iwqgb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6j7jm")
+
+[node name="SearchButton" type="TextureButton" parent="MarginContainer/VBoxContainer/Panel" unique_id=1871433746]
+modulate = Color(1, 0.4745098, 0.7764706, 1)
+texture_filter = 2
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 13.000004
+offset_top = 11.0
+offset_right = 113.0
+offset_bottom = 111.0
+scale = Vector2(0.8, 0.8)
+texture_normal = SubResource("CanvasTexture_xjsxs")
+stretch_mode = 0
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=450032836]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_icons/scroll_hint_vertical = SubResource("GradientTexture2D_37k4y")
+
+[node name="SmallSongCardContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer2" unique_id=881735430]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/Panel/LineEdit" to="." method="_on_line_edit_text_changed"]

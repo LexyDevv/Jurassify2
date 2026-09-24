@@ -11,7 +11,7 @@ colors = PackedColorArray(0.35013333, 0.128, 0.4, 1, 0.06231056, 0.022779167, 0.
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nng11"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2w01q"]
 gradient = SubResource("Gradient_hsyhs")
 width = 18
 height = 32
@@ -19,28 +19,28 @@ use_hdr = true
 fill_to = Vector2(1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2w01q"]
-texture = SubResource("GradientTexture2D_nng11")
+texture = SubResource("GradientTexture2D_2w01q")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3i0vd"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3n44d"]
 diffuse_texture = ExtResource("2_2w01q")
 
-[sub_resource type="Gradient" id="Gradient_jmugw"]
+[sub_resource type="Gradient" id="Gradient_lpk85"]
 colors = PackedColorArray(0, 0, 0, 0, 0.9957554, 0.9894056, 0.99087626, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3i0vd"]
-gradient = SubResource("Gradient_jmugw")
+gradient = SubResource("Gradient_lpk85")
 width = 128
 fill_from = Vector2(1, 0.5)
 fill_to = Vector2(0, 0.5)
 metadata/_snap_enabled = true
 
-[sub_resource type="Gradient" id="Gradient_2w01q"]
+[sub_resource type="Gradient" id="Gradient_s120b"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_hsyhs"]
-gradient = SubResource("Gradient_2w01q")
+gradient = SubResource("Gradient_s120b")
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0.1)
 metadata/_snap_enabled = true

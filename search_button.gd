@@ -1,3 +1,3 @@
 extends TextureButton
 func _on_pressed() -> void:
-	pass
+	get_tree().change_scene_to_file("res://Jurassify2/search_scene.tscn")

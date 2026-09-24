@@ -12,7 +12,7 @@ var token
 var salt
 var nowPlaying
 signal random_songs_received(songs_array: Array)
-
+signal search_results_received(search_results: Dictionary)
 
 
 func _ready():
@@ -145,3 +145,39 @@ func getNowPlaying():
 	return nowPlaying
 func getNowPlayingID():
 	nowPlaying.get("id","")
+
+
+
+func search_library(query: String, max_songs: int = 15) -> void:
+	var request = HTTPRequest.new()
+	add_child(request)
+	request.timeout = 10.0
+	request.request_completed.connect(_on_search_completed.bind(request))
+	
+	# uri_encode() is CRITICAL here so spaces in the search term become "%20"
+	var safe_query = query.uri_encode()
+	
+	var request_url = ServerUrl + "/rest/search3.view?query=" + safe_query + "&songCount=" + str(max_songs) + "&albumCount=0&artistCount=0&u=" + username + "&t=" + token + "&s=" + salt + "&v=1.16.1&c=Jurassify&f=json"
+	
+	print("Searching for: ", query)
+	loading()
+	request.request(request_url)
+
+
+# The callback that processes the response
+func _on_search_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray, request_node: HTTPRequest) -> void:
+	stopLoading()
+	request_node.queue_free() # Clean up the node
+	
+	if response_code == 200:
+		var json = JSON.parse_string(body.get_string_from_utf8())
+		var response = json.get("subsonic-response", {})
+		
+		if response.has("searchResult3"):
+			# Pass the entire search result dictionary to whoever is listening
+			search_results_received.emit(response["searchResult3"])
+			print(response["searchResult3"])
+		else:
+			print("No search results object found.")
+	else:
+		print("Search failed. Code: ", response_code)
